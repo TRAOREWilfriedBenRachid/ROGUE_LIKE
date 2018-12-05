@@ -1,6 +1,7 @@
 package Rogue_like.Rogue_like;
 
 import java.awt.event.KeyEvent;
+
 import asciiPanel.AsciiPanel;
 
 public class LoseScreen implements Screen {
