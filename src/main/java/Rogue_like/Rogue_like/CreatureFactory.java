@@ -1,6 +1,7 @@
 package Rogue_like.Rogue_like;
 
 import asciiPanel.AsciiPanel;
+
 public class CreatureFactory {
 	private World world;
 	
@@ -13,5 +14,12 @@ public class CreatureFactory {
 		world.addAtEmptyLocation(player);
 		new PlayerAi(player);
 		return player;
+	}
+	
+	public Creature newFungus(){
+		Creature fungus = new Creature(world, 'f', AsciiPanel.green);
+		world.addAtEmptyLocation(fungus);
+		new FungusAi(fungus, this);
+		return fungus;
 	}
 }
