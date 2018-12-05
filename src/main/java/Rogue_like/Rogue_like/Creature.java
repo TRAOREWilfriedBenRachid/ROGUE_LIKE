@@ -2,7 +2,7 @@ package Rogue_like.Rogue_like;
 
 import java.awt.Color;
 
-public class Creature {
+public class Creature {///// CREATION OF CREATURE CLASS
 	private World world;
 	
 	public int x;

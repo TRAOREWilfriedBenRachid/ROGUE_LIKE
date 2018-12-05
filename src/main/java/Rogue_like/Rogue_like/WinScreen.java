@@ -6,8 +6,8 @@ import asciiPanel.AsciiPanel;
 public class WinScreen implements Screen {
 
     public void displayOutput(AsciiPanel terminal) {
-        terminal.write("Vous avez gagné.", 1, 1);
-        terminal.writeCenter("-- Appuyez sur entrée pour redémarrer --", 22);
+        terminal.write("you are winner.", 5, 1);
+        terminal.writeCenter("--#### Press entry for reload### --", 22);
     }
 
     public Screen respondToUserInput(KeyEvent key) {
