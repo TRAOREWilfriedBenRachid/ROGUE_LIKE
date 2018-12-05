@@ -4,10 +4,11 @@ import java.awt.event.KeyEvent;
 import asciiPanel.AsciiPanel;
 
 public class StartScreen implements Screen {
-
+//////// ECRAN DE DEMARRAGE /////
     public void displayOutput(AsciiPanel terminal) {
-        terminal.write("                       JEUX DE ROGUE LIKE", 1, 1);
-        terminal.writeCenter("-- Appuyez sur entrée pour démarrer --", 22);
+        terminal.write("                        ROGUE LIKE GAME", 1, 1);
+        terminal.writeCenter("-- Press  entry  for reload --", 22);
+       // terminal.setBackground(AsciiPanel.white);
     }
 
     public Screen respondToUserInput(KeyEvent key) {
