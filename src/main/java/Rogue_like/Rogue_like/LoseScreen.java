@@ -3,7 +3,7 @@ package Rogue_like.Rogue_like;
 import java.awt.event.KeyEvent;
 
 import asciiPanel.AsciiPanel;
-////////ECRAN POUR PERDANT /////
+//////// ECRAN AFFICHER POUR UN PERDANT /////
 public class LoseScreen implements Screen {
 
     public void displayOutput(AsciiPanel terminal) {
@@ -17,3 +17,5 @@ public class LoseScreen implements Screen {
         return key.getKeyCode() == KeyEvent.VK_ENTER ? new PlayScreen() : this;
     }
 }
+
+//une fois le joueur perd, on lui demande d'appuier sur Entrée pour rejouer
