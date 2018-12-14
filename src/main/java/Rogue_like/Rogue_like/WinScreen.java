@@ -14,3 +14,5 @@ public class WinScreen implements Screen {
         return key.getKeyCode() == KeyEvent.VK_ENTER ? new PlayScreen() : this;
     }
 }
+
+// une fois le joueur gagne, on lui demande d'appuier sur Entrée pour continuer
