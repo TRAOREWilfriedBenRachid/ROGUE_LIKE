@@ -31,6 +31,7 @@ public class ApplicationMain extends JFrame implements KeyListener {
         repaint();
     }
 
+    
     public void keyReleased(KeyEvent e) { }
 
     public void keyTyped(KeyEvent e) { }

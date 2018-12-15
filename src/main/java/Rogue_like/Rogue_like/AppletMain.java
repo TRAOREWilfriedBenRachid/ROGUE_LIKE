@@ -9,7 +9,7 @@ public class AppletMain extends Applet implements KeyListener{
     private static final long serialVersionUID = 2560255315130084198L;
 
     private AsciiPanel terminal;
-	private Screen screen;
+	private Screen screen; 
 
     public AppletMain(){
     	super();
