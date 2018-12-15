@@ -42,8 +42,8 @@ public class PlayScreen implements Screen {
 		int top = getScrollY(); 
 		
 		displayTiles(terminal, left, top);
-		
-		terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 22);
+		terminal.writeCenter("-- c'est parti!!!!!!!!!!!!!!!!!!!!!!--", 22);
+		// terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 22);
 	}
 
 	private void displayTiles(AsciiPanel terminal, int left, int top) {

@@ -10,6 +10,7 @@ public class LoseScreen implements Screen {
         //terminal.setBackground(AsciiPanel.yellow);
         terminal.write("you 're loser.", 1, 1);
         terminal.writeCenter("-- Press  entry  for reload --", 22);
+      //  terminal.checkImage(, 2, 2,null)
     
     }
 

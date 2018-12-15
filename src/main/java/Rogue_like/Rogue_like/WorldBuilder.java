@@ -56,4 +56,6 @@ public class WorldBuilder {
 	public WorldBuilder makeCaves() {
 		return randomizeTiles().smooth(8);
 	}
+	
+	
 }
