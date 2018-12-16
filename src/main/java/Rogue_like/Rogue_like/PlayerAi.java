@@ -1,17 +1,49 @@
 package Rogue_like.Rogue_like;
 
+import java.util.List;
+
+
+
+
+
 public class PlayerAi extends CreatureAi {
 
-	public PlayerAi(Creature creature) {
+	private List<String> messages;
+	private FieldOfView fov;
+	
+	public PlayerAi(Creature creature, List<String> messages, FieldOfView fov) {
 		super(creature);
+		this.messages = messages;
+		this.fov = fov;
 	}
 
-	public void onEnter(int x, int y, Tile tile){
+	public void onEnter(int x, int y, int z, Tile tile){
 		if (tile.isGround()){
 			creature.x = x;
 			creature.y = y;
+			creature.z = z;
+			
+			Item item = creature.item(creature.x, creature.y, creature.z);
+			if (item != null)
+				creature.notify("il y a un " + creature.nameOf(item) + " here.");
+			
 		} else if (tile.isDiggable()) {
-			creature.dig(x, y);
+			creature.dig(x, y, z);
 		}
+	}
+	
+	public void onNotify(String message){
+		messages.add(message);
+	}
+	
+	public boolean canSee(int wx, int wy, int wz) {
+		return fov.isVisible(wx, wy, wz);
+	}
+	
+	public void onGainLevel(){
+	}
+
+	public Tile rememberedTile(int wx, int wy, int wz) {
+		return fov.tile(wx, wy, wz);
 	}
 }

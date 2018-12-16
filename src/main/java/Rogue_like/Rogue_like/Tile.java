@@ -1,24 +1,31 @@
 package Rogue_like.Rogue_like;
 
 import java.awt.Color;
+
 import asciiPanel.AsciiPanel;
 
+
 public enum Tile {
-	FLOOR((char)250, AsciiPanel.green),
-	WALL((char)177, AsciiPanel.white),
-	BOUNDS('x', AsciiPanel.brightBlack);
-	//STAIRS_DOWN('>', AsciiPanel.white),
-   // STAIRS_UP('<', AsciiPanel.white);
+	FLOOR((char)250, AsciiPanel.red, "A dirt and rock cave floor."),
+	WALL((char)177, AsciiPanel.red, "A dirt and rock cave wall."),
+	BOUNDS('x', AsciiPanel.brightBlack, "Beyond the edge of the world."),
+	STAIRS_DOWN('>', AsciiPanel.white, "A stone staircase that goes down."),
+	STAIRS_UP('<', AsciiPanel.white, "A stone staircase that goes up."),
+	UNKNOWN(' ', AsciiPanel.green, "(unknown)");
 	
 	private char glyph;
 	public char glyph() { return glyph; }
 	
 	private Color color;
 	public Color color() { return color; }
+
+	private String description;
+	public String details(){ return description; }
 	
-	Tile(char glyph, Color color){
+	Tile(char glyph, Color color, String description){
 		this.glyph = glyph;
 		this.color = color;
+		this.description = description;
 	}
 
 	public boolean isGround() {
@@ -28,5 +35,4 @@ public enum Tile {
 	public boolean isDiggable() {
 		return this == Tile.WALL;
 	}
-	
 }
