@@ -10,39 +10,39 @@ public class LevelUpController {
 			new LevelUpOption("Augmentation des points de vie ") {
 				public void invoke(Creature creature) {
 					creature.modifyMaxHp(10);
-					creature.modifyHp(10, "Died from increaced hp level-up bonus?");
-					creature.doAction("look a lot healthier");
+					creature.modifyHp(10, "tué par exces  du bonus de niveau de vie?");
+					creature.doAction("en forme");
 				}
-			}, new LevelUpOption("Augmentation de mana") {
+			}, new LevelUpOption("Augmentation de magie") {
 				public void invoke(Creature creature) {
 					creature.modifyMaxMana(5);
 					creature.modifyMana(5);
-					creature.doAction("look more magical");
+					creature.doAction("plus de magie");
 				}
-			}, new LevelUpOption("Increased attack value") {
+			}, new LevelUpOption("augmentation du niveau dattaque") {
 				public void invoke(Creature creature) {
 					creature.modifyAttackValue(2);
-					creature.doAction("look stronger");
+					creature.doAction("plus fort");
 				}
-			}, new LevelUpOption("Increased defense value") {
+			}, new LevelUpOption("augmentation de la defense") {
 				public void invoke(Creature creature) {
 					creature.modifyDefenseValue(1);
-					creature.doAction("look a little tougher");
+					creature.doAction("plus securisé");
 				}
 			},// new LevelUpOption("Increased vision") {
 				//public void invoke(Creature creature) {
 					//creature.modifyVisionRadius(1);
 					//creature.doAction("look a little more aware");
 				//}
-			 new LevelUpOption("Augmentation de la r�g�n�ration de Poins de Vie") {
+			 new LevelUpOption("Augmentation de la regeneration de Poins de Vie") {
 				public void invoke(Creature creature) {
 					creature.modifyRegenHpPer1000(10);
-					creature.doAction("look a little less bruised");
+					creature.doAction("moins meurtri");
 				}
-			}, new LevelUpOption("Augmentation de la r�g�n�ration de mana") {
+			}, new LevelUpOption("Augmentation de la regeneration de mana") {
 				public void invoke(Creature creature) {
 					creature.modifyRegenManaPer1000(10);
-					creature.doAction("look a little less tired");
+					creature.doAction("plus cool");
 				}
 			} };
 

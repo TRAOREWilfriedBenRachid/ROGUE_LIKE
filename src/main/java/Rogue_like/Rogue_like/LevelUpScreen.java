@@ -6,17 +6,20 @@ import java.util.List;
 
 import Rogue_like.Rogue_like.Creature;
 import Rogue_like.Rogue_like.LevelUpController;
+
 import asciiPanel.AsciiPanel;
 
 public class LevelUpScreen implements Screen {
 	private LevelUpController controller;
 	private Creature player;
 	private int picks;
+	//public Chronometre chrono;/////// APPEL DUN CHRONO
 	
 	public LevelUpScreen(Creature player, int picks){
 		this.controller = new LevelUpController();
 		this.player = player;
 		this.picks = picks;
+		//this.chrono= chrono;
 	}
 	
 //	@Override

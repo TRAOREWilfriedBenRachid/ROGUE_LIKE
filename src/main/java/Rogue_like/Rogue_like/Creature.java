@@ -2,6 +2,7 @@ package Rogue_like.Rogue_like;
 
 import java.awt.Color;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Creature {
 	public int x;
 	public int y;
 	public int z;
+	public int gagne =0;
 	
 	private char glyph;
 	public char glyph() { return glyph; }
@@ -126,6 +128,7 @@ public class Creature {
 		this.maxMana = 5;
 		this.mana = maxMana;
 		this.regenManaPer1000 = 20;
+	
 	}
 	
 	public void moveBy(int mx, int my, int mz){
@@ -231,6 +234,9 @@ public class Creature {
 		modifyFood(-10);
 		world.dig(wx, wy, wz);
 		doAction("dig");
+		/////
+		hp--;
+		mana = (int) (mana-0.1);
 	}
 	
 	public void update(){
@@ -373,6 +379,8 @@ public class Creature {
 			doAction("pickup a %s", nameOf(item));
 			world.remove(x, y, z);
 			inventory.add(item);
+			if( nameOf(item)=="ours en peluche")
+		     gagne=1;
 		}
 	}
 	

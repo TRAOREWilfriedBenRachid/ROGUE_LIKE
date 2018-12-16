@@ -41,6 +41,7 @@ public class PlayScreen implements Screen {
 		StuffFactory factory = new StuffFactory(world);
 		createCreatures(factory);
 		createItems(factory);
+		
 	}
 
 	
@@ -50,9 +51,11 @@ public class PlayScreen implements Screen {
 		for (int z = 0; z < world.depth(); z++){
 			for (int i = 0; i < 4; i++){
 				factory.newFungus(z);
+				factory.newVictoryItem(z);
 			}
 			for (int i = 0; i < 10; i++){
 				factory.newBat(z);
+				
 			}
 			//////////////////////////////////////generation de fruits
 			for (int i = 0; i < 10; i++){
@@ -71,11 +74,14 @@ public class PlayScreen implements Screen {
 			factory.newBread(z);
 			factory.randomArmor(z);
 			factory.randomWeapon(z);
-			factory.randomWeapon(z);
+			
 			
 			for (int i = 0; i < z + 1; i++){
 				factory.randomPotion(z);
 				factory.randomSpellBook(z);
+				
+				////// OURS EN PELUCHE A EFFACER
+				
 			}
 		}
 		factory.newVictoryItem(world.depth() - 1);
@@ -100,7 +106,9 @@ public class PlayScreen implements Screen {
 		displayMessages(terminal, messages);
 		
 		String stats = String.format(" %3d/%3d hp   %d/%d mana   %8s", player.hp(), player.maxHp(), player.mana(), player.maxMana(), hunger());
+		//String stats2 = String.format(" %3d/%3d Time", player.xp(), 100);
 		terminal.write(stats, 1, 23);
+     //terminal.write(stats2, 2, 25);
 		
 		if (subscreen != null)
 			subscreen.displayOutput(terminal);
@@ -191,6 +199,8 @@ public class PlayScreen implements Screen {
 			switch (key.getKeyChar()){
 			case 'g':
 			case ',': player.pickup(); break;
+			
+			
 			case '<': 
 				if (userIsTryingToExit())
 					return userExits();
@@ -219,10 +229,15 @@ public class PlayScreen implements Screen {
 	
 	private Screen userExits(){
 		for (Item item : player.inventory().getItems()){
-			if (item != null && item.name().equals("teddy bear"))
+			if (item != null && item.name().equals("ours en peluche"))
+			
 				return new WinScreen();
 		}
 		player.modifyHp(0, "Died while cowardly fleeing the caves.");
 		return new LoseScreen(player);
 	}
-}
+	
+
+		
+	}
+

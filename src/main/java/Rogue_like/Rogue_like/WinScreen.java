@@ -13,7 +13,7 @@ System.out.println("Bravooooooooo Vous avez gagné!!!!!!!!!!!!!!");
 		
 		System.out.println("-----Appuyez entrer pour redemarrer----.");
 		terminal.writeCenter("-- appuyer entrer pour une nouvelle partie --", 22);
-        terminal.write("you are winner.", 5, 1);
+        terminal.write("Bravooooooooo Vous avez gagné!!!!!!!!!!!!!!.", 5, 1);
         terminal.writeCenter("-- Press entr for reload --", 22);
 
     }

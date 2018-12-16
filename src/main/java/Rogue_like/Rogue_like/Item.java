@@ -62,7 +62,7 @@ public class Item {
 		String details = "";
 		
 		if (attackValue != 0)
-			details += "  attack:" + attackValue;
+			details += "  a attaqué:" + attackValue;
 
 		if (thrownAttackValue != 1)
 			details += "  thrown:" + thrownAttackValue;
