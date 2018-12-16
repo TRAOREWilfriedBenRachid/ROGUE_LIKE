@@ -67,7 +67,7 @@ public class PlayScreen implements Screen {
 			}
 
 			factory.newFruit(z);
-			factory.newEdibleWeapon(z);
+			//factory.newEdibleWeapon(z);
 			factory.newBread(z);
 			factory.randomArmor(z);
 			factory.randomWeapon(z);
@@ -166,7 +166,7 @@ public class PlayScreen implements Screen {
 			case KeyEvent.VK_N: player.moveBy( 1, 1, 0); break;
 						
 			case KeyEvent.VK_D: subscreen = new DropScreen(player); break;
-			case KeyEvent.VK_G: subscreen = new EatScreen(player); break;
+			case KeyEvent.VK_E: subscreen = new EatScreen(player); break;
 			case KeyEvent.VK_W: subscreen = new EquipScreen(player); break;
 			case KeyEvent.VK_X: subscreen = new ExamineScreen(player); break;
 			case KeyEvent.VK_SEMICOLON: subscreen = new LookScreen(player, "Looking", 
