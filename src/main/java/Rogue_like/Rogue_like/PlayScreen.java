@@ -27,7 +27,7 @@ public class PlayScreen implements Screen {
 	static long  chrono ;
 
 	public PlayScreen(){
-		System.out.println("Votre mission consiste a \n Descendez les grottes du moindre danger, \n retrouvez l'ours en peluche perdu pour gagner.\n Utilisez ce que vous trouvez pour éviter de mourir.:");
+		System.out.println("Votre mission consiste a \n Descendez les grottes du moindre danger, \n retrouvez la coupe  pour gagner.\n Utilisez ce que vous trouvez pour éviter de mourir.:");
 		
 		System.out.println ("appuyer sur g ou , pour ramasser\n");
 		System.out.println ("appuyer sur x pour examiner\n");
@@ -35,7 +35,7 @@ public class PlayScreen implements Screen {
 		
 		System.out.println ("appuyer sur e pour manger les le pain ou la pomme ramassee\n");
 		System.out.println ("appuyer sur ; pour voir le resume de votre ^partie\n");
-		System.out.println ("appuyer sur entrer pour gagner\n si vous avez obtenu un score >100  et \n si vous avez recuperer litem V pour examiner\n");
+		System.out.println ("appuyer sur entrer pour gagner\n si vous avez obtenu un score >100  et \n si vous avez recuperer litem V pour gagner\n");
 		//AsciiPanel terminal;
 		//terminal.writeCenter ("appuyer sur g pour ramasser\n", AsciiPanel.yellow, 22);
 		
@@ -251,12 +251,12 @@ public class PlayScreen implements Screen {
 	private Screen userExits(){
 		
 		for (Item item : player.inventory().getItems()){
-			if (item != null && item.name().equals("ours en peluche"))
+			if (item != null && item.name().equals("coupe"))
 			
 				return new GagneScreen();
 			
 		}
-		player.modifyHp(0, "tu� en fuyant les cavernes.");
+		player.modifyHp(0, "tuer en fuyant les cavernes.");
 		return new PerdScreen(player);
 	}
 	

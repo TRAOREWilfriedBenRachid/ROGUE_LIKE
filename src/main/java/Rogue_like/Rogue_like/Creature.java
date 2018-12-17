@@ -139,7 +139,7 @@ public class Creature {            //::constructeur de creature
 		this.level = 1;
 		this.regenHpPer1000 = 10;
 		this.effects = new ArrayList<Effect>();
-		this.maxMana = 5;
+		this.maxMana = 9;
 		this.mana = maxMana;
 		this.regenManaPer1000 = 20;
 	
@@ -399,7 +399,7 @@ public class Creature {            //::constructeur de creature
 			doAction("pickup a %s", nameOf(item));
 			world.remove(x, y, z);
 			inventory.add(item);
-			if( nameOf(item)=="ours en peluche")
+			if( nameOf(item)=="coupe")
 		     gagne=1;
 		}
 	}
@@ -428,11 +428,11 @@ public class Creature {            //::constructeur de creature
 	}
 	
 	public boolean isPlayer(){
-		return glyph == '@';
+		return glyph == 'j';
 	}
 	
 	public void eat(Item item){
-		doAction("eat a " + nameOf(item));
+		doAction("mange " + nameOf(item));
 		consume(item);
 	}
 	

@@ -22,14 +22,14 @@ public class StuffFactory {
 	
 	
 	public Creature newPlayer(List<String> messages, FieldOfView fov){
-		Creature player = new Creature(world, '@', AsciiPanel.brightWhite, "joueur", 100, 20, 5);
+		Creature player = new Creature(world, 'j', AsciiPanel.brightWhite, "joueur", 100, 20, 5);
 		world.addAtEmptyLocation(player, 0);
 		new PlayerAi(player, messages, fov);
 		return player;
 	}
 	
 	public Creature newFungus(int depth){
-		Creature fungus = new Creature(world, 'c', AsciiPanel.green, "champignon", 10, 0, 0);
+		Creature fungus = new Creature(world, 'c', AsciiPanel.green, "tortue", 10, 0, 0);
 		world.addAtEmptyLocation(fungus, depth);
 		new FungusAi(fungus, this);
 		return fungus;
@@ -52,7 +52,7 @@ public class StuffFactory {
 	}
 	
 	public Item newVictoryItem(int depth){
-		Item item = new Item('V', AsciiPanel.white, "ours en peluche", null);
+		Item item = new Item('V', AsciiPanel.brightWhite, "coupe", null);
 		world.addAtEmptyLocation(item, depth);
 		return item;
 	}
