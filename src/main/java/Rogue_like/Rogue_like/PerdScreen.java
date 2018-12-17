@@ -2,14 +2,12 @@ package Rogue_like.Rogue_like;
 
 import java.awt.event.KeyEvent;
 
-
-
 import asciiPanel.AsciiPanel;
 
-public class LoseScreen implements Screen {
+public class PerdScreen implements Screen {
 	private Creature player;
 	
-	public LoseScreen(Creature player){
+	public PerdScreen(Creature player){
 		this.player = player;
 	}
 	
@@ -22,7 +20,11 @@ public class LoseScreen implements Screen {
 		terminal.writeCenter("-----------------------------------", 6);
 		terminal.writeCenter("------Envie de retenter????????----", 7);
 		terminal.writeCenter(player.causeOfDeath(), 5);
+		String stats2 = String.format(" Vous avez obtenu le Score de %3d points", player.xp());
+		terminal.write(stats2, 20,10);
+		
 	    terminal.writeCenter("-- appuyer [entrer] pour rejouer --", 22);
+	    
 	    System.out.println("game over");
 	       String s= player.causeOfDeath(); 
 	       System.out.println(s);

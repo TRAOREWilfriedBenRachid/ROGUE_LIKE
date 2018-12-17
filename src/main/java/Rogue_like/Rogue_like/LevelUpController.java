@@ -29,21 +29,13 @@ public class LevelUpController {
 					creature.modifyDefenseValue(1);
 					creature.doAction("plus securisé");
 				}
-			},// new LevelUpOption("Increased vision") {
+			// new LevelUpOption("Increased vision") {
 				//public void invoke(Creature creature) {
 					//creature.modifyVisionRadius(1);
 					//creature.doAction("look a little more aware");
 				//}
-			 new LevelUpOption("Augmentation de la regeneration de Poins de Vie") {
-				public void invoke(Creature creature) {
-					creature.modifyRegenHpPer1000(10);
-					creature.doAction("moins meurtri");
-				}
-			}, new LevelUpOption("Augmentation de la regeneration de mana") {
-				public void invoke(Creature creature) {
-					creature.modifyRegenManaPer1000(10);
-					creature.doAction("plus cool");
-				}
+			
+			
 			} };
 
 	public void autoLevelUp(Creature creature) {

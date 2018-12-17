@@ -1,6 +1,7 @@
 package Rogue_like.Rogue_like;
 
 import Rogue_like.Rogue_like.Creature;
+
 import Rogue_like.Rogue_like.Item;
 
 public class ExamineScreen extends InventoryBasedScreen {
@@ -11,7 +12,7 @@ public class ExamineScreen extends InventoryBasedScreen {
 
 	@Override
 	protected String getVerb() {
-		return "examine";
+		return "examiner";
 	}
 
 	@Override
@@ -21,7 +22,7 @@ public class ExamineScreen extends InventoryBasedScreen {
 
 	@Override
 	protected Screen use(Item item) {
-		String article = "aeiou".contains(player.nameOf(item).subSequence(0, 1)) ? "an " : "a ";
+		String article = "aeiou".contains(player.nameOf(item).subSequence(0, 1)) ? " " : " ";
 		player.notify("c'est un  " + article + player.nameOf(item) + "." + item.details());
 		return null;
 	}

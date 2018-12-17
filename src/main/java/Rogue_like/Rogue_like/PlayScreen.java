@@ -2,6 +2,7 @@ package Rogue_like.Rogue_like;
 
 import java.awt.Color;
 
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,18 @@ public class PlayScreen implements Screen {
 	private List<String> messages;
 	private FieldOfView fov;
 	private Screen subscreen;
+	static long  chrono ;
 
 	public PlayScreen(){
-		System.out.println("Votre mission consiste a \n Descendez les grottes du moindre danger, \n retrouvez l'ours en peluche perdu et revenez à la surface pour gagner.\n Utilisez ce que vous trouvez pour éviter de mourir.:");
+		System.out.println("Votre mission consiste a \n Descendez les grottes du moindre danger, \n retrouvez la coupe  pour gagner.\n Utilisez ce que vous trouvez pour éviter de mourir.:");
 		
-		System.out.println ("appuyer sur g pour ramasser\n");
+		System.out.println ("appuyer sur g ou , pour ramasser\n");
 		System.out.println ("appuyer sur x pour examiner\n");
+		System.out.println ("appuyer sur D pour supprimer un item de l'inventaire\n");
+		
+		System.out.println ("appuyer sur e pour manger les le pain ou la pomme ramassee\n");
+		System.out.println ("appuyer sur ; pour voir le resume de votre ^partie\n");
+		System.out.println ("appuyer sur entrer pour gagner\n si vous avez obtenu un score >100  et \n si vous avez recuperer litem V pour gagner\n");
 		//AsciiPanel terminal;
 		//terminal.writeCenter ("appuyer sur g pour ramasser\n", AsciiPanel.yellow, 22);
 		
@@ -48,10 +55,16 @@ public class PlayScreen implements Screen {
 	private void createCreatures(StuffFactory factory){
 		player = factory.newPlayer(messages, fov);
 		
+		//if(player.xp()>1){
+		//	for (int z = 0; z < world.depth(); z++)
+		//	factory.newVictoryItem(z);
+		//}
+		
+		
 		for (int z = 0; z < world.depth(); z++){
 			for (int i = 0; i < 4; i++){
 				factory.newFungus(z);
-				factory.newVictoryItem(z);
+				//factory.newVictoryItem(z);
 			}
 			for (int i = 0; i < 10; i++){
 				factory.newBat(z);
@@ -72,20 +85,18 @@ public class PlayScreen implements Screen {
 			factory.newFruit(z);
 			//factory.newEdibleWeapon(z);
 			factory.newBread(z);
-			factory.randomArmor(z);
+			//factory.randomArmor(z);
 			factory.randomWeapon(z);
 			
 			
 			for (int i = 0; i < z + 1; i++){
-				factory.randomPotion(z);
-				factory.randomSpellBook(z);
+				//factory.randomPotion(z);
+				factory.newVictoryItem(z);
+				//factory.randomSpellBook(z);
 				
 				////// OURS EN PELUCHE A EFFACER
-				
-			}
-		}
-		factory.newVictoryItem(world.depth() - 1);
-	}
+		
+	}}}
 	
 	private void createWorld(){
 		world = new WorldBuilder(90, 32, 5)
@@ -105,13 +116,24 @@ public class PlayScreen implements Screen {
 		displayTiles(terminal, left, top);
 		displayMessages(terminal, messages);
 		
-		String stats = String.format(" %3d/%3d hp   %d/%d mana   %8s", player.hp(), player.maxHp(), player.mana(), player.maxMana(), hunger());
-		//String stats2 = String.format(" %3d/%3d Time", player.xp(), 100);
+		String stats = String.format(" %3d/%3d PV   %d/%d magie   %8s", player.hp(), player.maxHp(), player.mana(), player.maxMana(), hunger());
+		String stats2 = String.format("%3d/%3d Score", player.xp(), 1000);
+		int stats3 =   player.xp();
+		terminal.write(stats2, 1,0);
 		terminal.write(stats, 1, 23);
-     //terminal.write(stats2, 2, 25);
+     ///terminal.write(stats2   , 1, 1);
+     
+     System.out.println("score  "+stats3);
+     chrono = java.lang.System.currentTimeMillis() ; 
+  
+	//String s = chrono.getDureeTxt();
+		System.out.println("chrono  "+chrono);
+		//terminal.write(chrono, 2,1);
 		
 		if (subscreen != null)
 			subscreen.displayOutput(terminal);
+		
+		
 	}
 	
 	private String hunger(){
@@ -149,8 +171,7 @@ public class PlayScreen implements Screen {
 				else
 					terminal.write(fov.tile(wx, wy, player.z).glyph(), x, y, Color.darkGray);
 			}
-		}
-	}
+		}}
 	
 	//@Override
 	public Screen respondToUserInput(KeyEvent key) {
@@ -174,23 +195,23 @@ public class PlayScreen implements Screen {
 			case KeyEvent.VK_N: player.moveBy( 1, 1, 0); break;
 						
 			case KeyEvent.VK_D: subscreen = new DropScreen(player); break;
-			case KeyEvent.VK_E: subscreen = new EatScreen(player); break;
-			case KeyEvent.VK_W: subscreen = new EquipScreen(player); break;
+			case KeyEvent.VK_E: subscreen = new MangeScreen(player); break;
+		
 			case KeyEvent.VK_X: subscreen = new ExamineScreen(player); break;
 			case KeyEvent.VK_SEMICOLON: subscreen = new LookScreen(player, "Looking", 
 					player.x - getScrollX(), 
 					player.y - getScrollY()); break;
-		case KeyEvent.VK_T: subscreen = new ThrowScreen(player,
-					player.x - getScrollX(), 
-					player.y - getScrollY()); break;
-			case KeyEvent.VK_F: 
-				if (player.weapon() == null || player.weapon().rangedAttackValue() == 0)
-					player.notify("You don't have a ranged weapon equiped.");
-				else
-					subscreen = new FireWeaponScreen(player,
-						player.x - getScrollX(), 
-					player.y - getScrollY()); break;
-			case KeyEvent.VK_Q: subscreen = new QuaffScreen(player); break;
+//					
+			
+			
+			//:::: le joueur gagne siii il a un score > 100 et sil a pu prendre litem ours en peluche ie litem de victoire
+			case KeyEvent.VK_ENTER: if (player.xp()> 100){
+				for (Item item : player.inventory().getItems()){
+					if (item != null && item.name().equals("ours en peluche "))
+			
+				return new GagneScreen();}}
+			
+			
 			case KeyEvent.VK_R: subscreen = new ReadScreen(player,
 				player.x - getScrollX(), 
 						player.y - getScrollY()); break;
@@ -218,7 +239,7 @@ public class PlayScreen implements Screen {
 			world.update();
 		
 		if (player.hp() < 1)
-			return new LoseScreen(player);
+			return new PerdScreen(player);
 		
 		return this;
 	}
@@ -228,16 +249,23 @@ public class PlayScreen implements Screen {
 	}
 	
 	private Screen userExits(){
+		
 		for (Item item : player.inventory().getItems()){
-			if (item != null && item.name().equals("ours en peluche"))
+			if (item != null && item.name().equals("coupe"))
 			
-				return new WinScreen();
+				return new GagneScreen();
+			
 		}
-		player.modifyHp(0, "Died while cowardly fleeing the caves.");
-		return new LoseScreen(player);
+		player.modifyHp(0, "tuer en fuyant les cavernes.");
+		return new PerdScreen(player);
+	}
+	
+	
+	
+		
 	}
 	
 
-		
-	}
+
+
 

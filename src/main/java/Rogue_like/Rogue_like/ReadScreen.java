@@ -2,6 +2,7 @@ package Rogue_like.Rogue_like;
 
 import Rogue_like.Rogue_like.Creature;
 
+
 import Rogue_like.Rogue_like.Item;
 
 public class ReadScreen extends InventoryBasedScreen {
@@ -17,7 +18,7 @@ public class ReadScreen extends InventoryBasedScreen {
 
 	@Override
 	protected String getVerb() {
-		return "read";
+		return "lire";
 	}
 
 	@Override
