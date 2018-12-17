@@ -2,6 +2,8 @@ package Rogue_like.Rogue_like;
 
 import java.awt.event.KeyEvent;
 
+
+
 import java.util.ArrayList;
 
 import Rogue_like.Rogue_like.Creature;
@@ -40,7 +42,7 @@ public class ReadSpellScreen implements Screen {
 		}
 		
 		terminal.clear(' ', 0, 23, 80, 1);
-		terminal.write("What would you like to read?", 2, 23);
+		terminal.write("Que voulez vous lire?", 2, 23);
 		
 		terminal.repaint();
 	}
@@ -75,6 +77,7 @@ public class ReadSpellScreen implements Screen {
 	}
 
 	protected Screen use(Spell spell){
+		
 		if (spell.requiresTarget())
 			return new CastSpellScreen(player, "", sx, sy, spell);
 		

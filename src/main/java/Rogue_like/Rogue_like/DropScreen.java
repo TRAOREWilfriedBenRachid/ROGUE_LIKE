@@ -11,7 +11,7 @@ public class DropScreen extends InventoryBasedScreen {
 
 	@Override
 	protected String getVerb() { 
-		return "drop"; 
+		return "supprimer"; 
 	}
 
 	@Override

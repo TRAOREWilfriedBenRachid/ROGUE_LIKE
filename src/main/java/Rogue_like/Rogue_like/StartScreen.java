@@ -7,6 +7,7 @@ import asciiPanel.AsciiPanel;
 
 
 public class StartScreen implements Screen {
+	///Chronometre chrono = new Chronometre();
 //////// ECRAN DE DEMARRAGE /////
     public void displayOutput(AsciiPanel terminal) {
     	
@@ -33,6 +34,7 @@ public class StartScreen implements Screen {
     			terminal.writeCenter("-- appuyer [entrer] pour commencer --", 22);
     			System.out.println("Appuyer sur entrer pour comnencer le jeu");
     			System.out.println("Bonne partie  Roguelike !!!!!!!");
+    			
     	
     	
        

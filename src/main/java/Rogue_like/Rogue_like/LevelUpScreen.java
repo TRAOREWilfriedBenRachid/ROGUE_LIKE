@@ -2,6 +2,8 @@ package Rogue_like.Rogue_like;
 
 import java.awt.event.KeyEvent;
 
+
+
 import java.util.List;
 
 import Rogue_like.Rogue_like.Creature;
@@ -28,7 +30,7 @@ public class LevelUpScreen implements Screen {
 		
 		int y = 5;
 		terminal.clear(' ', 5, y, 30, options.size() + 2);
-		terminal.write("   Choose a level up bonus    ", 5, y++);
+		terminal.write("   Choisissez un bonus   ", 5, y++);
 		terminal.write("------------------------------", 5, y++);
 		
 		for (int i = 0; i < options.size(); i++){

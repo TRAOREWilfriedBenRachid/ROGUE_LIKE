@@ -1,6 +1,7 @@
 package Rogue_like.Rogue_like;
 
 import Rogue_like.Rogue_like.Creature;
+
 import Rogue_like.Rogue_like.Spell;
 
 public class CastSpellScreen extends TargetBasedScreen {

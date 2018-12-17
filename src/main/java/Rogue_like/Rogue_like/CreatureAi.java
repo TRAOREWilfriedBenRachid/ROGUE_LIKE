@@ -136,21 +136,7 @@ public class CreatureAi {
 		return false;
 	}
 
-	protected void useBetterEquipment() {
-		int currentWeaponRating = creature.weapon() == null ? 0 : creature.weapon().attackValue() + creature.weapon().rangedAttackValue();
-		int currentArmorRating = creature.armor() == null ? 0 : creature.armor().defenseValue();
 		
-		for (Item item : creature.inventory().getItems()){
-			if (item == null)
-				continue;
-			
-			boolean isArmor = item.attackValue() + item.rangedAttackValue() < item.defenseValue();
-			
-			if (item.attackValue() + item.rangedAttackValue() > currentWeaponRating
-					|| isArmor && item.defenseValue() > currentArmorRating) {
-				creature.equip(item);
-			}
-		}
-	}
+	
 	
 }

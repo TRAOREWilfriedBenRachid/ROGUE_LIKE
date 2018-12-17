@@ -1,30 +1,28 @@
 package Rogue_like.Rogue_like;
 
 import Rogue_like.Rogue_like.Creature;
+
 import Rogue_like.Rogue_like.Item;
 
-public class ThrowScreen extends InventoryBasedScreen {
-	private int sx;
-	private int sy;
-	
-	public ThrowScreen(Creature player, int sx, int sy) {
+public class MangeScreen extends InventoryBasedScreen {
+
+	public MangeScreen(Creature player) {
 		super(player);
-		this.sx = sx;
-		this.sy = sy;
 	}
 
 	@Override
 	protected String getVerb() {
-		return "throw";
+		return "manger";
 	}
 
 	@Override
 	protected boolean isAcceptable(Item item) {
-		return true;
+		return item.foodValue() != 0;
 	}
 
 	@Override
 	protected Screen use(Item item) {
-		return new ThrowAtScreen(player, sx, sy, item);
+		player.eat(item);
+		return null;
 	}
 }
