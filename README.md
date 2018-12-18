@@ -4,6 +4,5 @@ MANUEL TECHNIQUE :
 	c'est pour cela que nous avons créer la Class : Tile "enum"
 	
 	Maintenant qu'il y a les environnements, il faut un monde pour les contenir, d'ou la classe : World
-	
-	
+	Pour des changement de monde, il faut appeler la classe WorldBuilder contenant des méthodes qui crée des nouveaux mondes pour jouer
 	
