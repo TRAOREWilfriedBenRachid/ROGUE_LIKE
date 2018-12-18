@@ -5,3 +5,5 @@ MANUEL TECHNIQUE :
 	
 	Maintenant qu'il y a les environnements, il faut un monde pour les contenir, d'ou la classe : World
 	
+	
+	
