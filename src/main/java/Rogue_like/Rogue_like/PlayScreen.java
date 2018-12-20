@@ -55,16 +55,11 @@ public class PlayScreen implements Screen {
 	private void createCreatures(StuffFactory factory){
 		player = factory.newPlayer(messages, fov);
 		
-		//if(player.xp()>1){
-		//	for (int z = 0; z < world.depth(); z++)
-		//	factory.newVictoryItem(z);
-		//}
-		
 		
 		for (int z = 0; z < world.depth(); z++){
 			for (int i = 0; i < 4; i++){
 				factory.newFungus(z);
-				//factory.newVictoryItem(z);
+				factory.newVictoryItem(z);
 			}
 			for (int i = 0; i < 10; i++){
 				factory.newBat(z);
@@ -83,9 +78,9 @@ public class PlayScreen implements Screen {
 			}
 
 			factory.newFruit(z);
-			//factory.newEdibleWeapon(z);
+			                                //factory.newEdibleWeapon(z);
 			factory.newBread(z);
-			//factory.randomArmor(z);
+			                             //factory.randomArmor(z);
 			factory.randomWeapon(z);
 			
 			
@@ -101,7 +96,7 @@ public class PlayScreen implements Screen {
 	private void createWorld(){
 		world = new WorldBuilder(90, 32, 5)
 					.makeCaves()
-					.build();
+					.build() ;
 	}
 	
 	public int getScrollX() { return Math.max(0, Math.min(player.x - screenWidth / 2, world.width() - screenWidth)); }
@@ -121,14 +116,14 @@ public class PlayScreen implements Screen {
 		int stats3 =   player.xp();
 		terminal.write(stats2, 1,0);
 		terminal.write(stats, 1, 23);
-     ///terminal.write(stats2   , 1, 1);
+    
      
      System.out.println("score  "+stats3);
      chrono = java.lang.System.currentTimeMillis() ; 
   
-	//String s = chrono.getDureeTxt();
+
 		System.out.println("chrono  "+chrono);
-		//terminal.write(chrono, 2,1);
+		
 		
 		if (subscreen != null)
 			subscreen.displayOutput(terminal);
@@ -202,19 +197,21 @@ public class PlayScreen implements Screen {
 					player.x - getScrollX(), 
 					player.y - getScrollY()); break;
 //					
-			
+			case KeyEvent.VK_R: subscreen = new ReadScreen(player,
+					player.x - getScrollX(), 
+							player.y - getScrollY()); break;
 			
 			//:::: le joueur gagne siii il a un score > 100 et sil a pu prendre litem ours en peluche ie litem de victoire
-			case KeyEvent.VK_ENTER: if (player.xp()> 100){
+			
+			case KeyEvent.VK_ENTER: if (player.xp()> 100) {
 				for (Item item : player.inventory().getItems()){
-					if (item != null && item.name().equals("ours en peluche "))
+					
+					if (item != null && item.name().equals("coupe"))
 			
-				return new GagneScreen();}}
+				return new GagneScreen();break;}}
 			
 			
-			case KeyEvent.VK_R: subscreen = new ReadScreen(player,
-				player.x - getScrollX(), 
-						player.y - getScrollY()); break;
+
 			}
 			
 			switch (key.getKeyChar()){

@@ -33,6 +33,6 @@ public enum Tile {
 	}
 
 	public boolean isDiggable() {
-		return this == Tile.WALL;
+		return false;
 	}
 }

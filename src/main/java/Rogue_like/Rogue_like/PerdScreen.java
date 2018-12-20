@@ -14,7 +14,7 @@ public class PerdScreen implements Screen {
 	public void displayOutput(AsciiPanel terminal) {
 		
 		//////////game over////////////
-		terminal.writeCenter("R.I.P.", 4);
+		terminal.writeCenter("GAME OVER", 4);
 		//terminal.writeCenter("***********************************************************************************",3,1);
 		terminal.writeCenter("----------------------------------", 5);
 		terminal.writeCenter("-----------------------------------", 6);

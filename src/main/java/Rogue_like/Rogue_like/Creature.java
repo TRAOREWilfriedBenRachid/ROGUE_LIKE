@@ -1,6 +1,7 @@
 package Rogue_like.Rogue_like;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,9 +159,9 @@ public class Creature {            //::constructeur de creature
 		
 		if (mz == -1){
 			if (tile == Tile.STAIRS_DOWN) {
-				doAction("walk up the stairs to level %d", z+mz+1);
+				doAction(" %d", z+mz+1);
 			} else {
-				doAction("try to go up but are stopped by the cave ceiling");
+				doAction("essai");
 				return;
 			}
 		} else if (mz == 1){
@@ -241,7 +242,7 @@ public class Creature {            //::constructeur de creature
 	}
 	
 	private void leaveCorpse(){
-		Item corpse = new Item('%', color, name + " corpse", null);
+		Item corpse = new Item('%', color, name + " ", null);
 		corpse.modifyFoodValue(maxHp * 5);
 		world.addAtEmptySpace(corpse, x, y, z);
 		for (Item item : inventory.getItems()){
@@ -285,7 +286,7 @@ public class Creature {            //::constructeur de creature
 		regenHpCooldown -= regenHpPer1000;
 		if (regenHpCooldown < 0){
 			if (hp < maxHp){
-				modifyHp(1, "mort?");
+				modifyHp(1, "est mort?");
 				modifyFood(-1);
 			}
 			regenHpCooldown += 1000;
@@ -394,9 +395,9 @@ public class Creature {            //::constructeur de creature
 		Item item = world.item(x, y, z);
 		
 		if (inventory.isFull() || item == null){
-			doAction("grab at the ground");
+			doAction(" rien a ramasser");
 		} else {
-			doAction("pickup a %s", nameOf(item));
+			doAction("ramasser %s", nameOf(item));
 			world.remove(x, y, z);
 			inventory.add(item);
 			if( nameOf(item)=="coupe")
@@ -410,7 +411,7 @@ public class Creature {            //::constructeur de creature
 			inventory.remove(item);
 			unequip(item);
 		} else {
-			notify("There's nowhere to drop the %s.", nameOf(item));
+			notify(" %s.", nameOf(item));
 		}
 	}
 	
